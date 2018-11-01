@@ -5,7 +5,16 @@ const planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uran
     to a section element in your HTML with an id of "planets".
     Use string templates to construct the DOM elements.
 */
-const planetEl = document.getElementById("planets")
+
+const htmlSection = (word) => {
+  const planetSect = document.getElementById("planets")
+  planetSect.textContent += `${word} `
+}
+
+planets.forEach((planet)=> {
+  htmlSection(planet)
+})
+
 
 /*
     Use the map method to create a new array where the
@@ -15,7 +24,10 @@ const planetEl = document.getElementById("planets")
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
 */
 
-
+const capPlanets = planets.map((planet) => {
+  return (planet[0].toUpperCase() + planet.slice(1))
+})
+console.log(capPlanets)
 /*
     Use the filter method to create a new array that
     contains planets with the letter 'e'. Use the `includes()`
@@ -24,6 +36,12 @@ const planetEl = document.getElementById("planets")
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
 */
 
+const noEPlanets = planets.filter(planet => !planet.includes("e"))
+
+console.log(noEPlanets)
 
 // Use the reduce method to create a sentence from the words in the following array
 const words = ["The", "early", "bird", "might", "get", "the", "worm", "but", "the", "second", "mouse", "gets", "the", "cheese"]
+
+const reducer = (accumulator, currentValue) => `${accumulator} ${currentValue}`;
+console.log(words.reduce(reducer))
